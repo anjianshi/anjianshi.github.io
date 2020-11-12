@@ -5,14 +5,20 @@
   
 
   
-  <title>简单研究</title>
+  <title>IndexedDB transaction 测试 | 简单研究</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="简单研究">
-<meta property="og:url" content="https://anjianshi.github.io/index.html">
+  <meta name="description" content="Tips：理解以下测试内容需要先了解：宏任务、微任务、事件循环（Event-Loop）的概念。 测试目标 transaction 的执行方式 transaction 的自动 commit 机制 手动 commit 和 abort 的行为 事务隔离情况 高频率开启 transaction 的性能情况  前置代码123456789101112131415161718192021222324252627">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IndexedDB transaction 测试">
+<meta property="og:url" content="https://anjianshi.github.io/2020/11/12/indexeddb-transaction/index.html">
 <meta property="og:site_name" content="简单研究">
+<meta property="og:description" content="Tips：理解以下测试内容需要先了解：宏任务、微任务、事件循环（Event-Loop）的概念。 测试目标 transaction 的执行方式 transaction 的自动 commit 机制 手动 commit 和 abort 的行为 事务隔离情况 高频率开启 transaction 的性能情况  前置代码123456789101112131415161718192021222324252627">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-12T09:07:26.000Z">
+<meta property="article:modified_time" content="2020-11-12T09:11:09.057Z">
 <meta property="article:author" content="安坚实">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="IndexedDB">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="简单研究" type="application/atom+xml">
@@ -62,9 +68,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-indexeddb-transaction" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-indexeddb-transaction" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/12/indexeddb-transaction/" class="article-date">
   <time datetime="2020-11-12T09:07:26.000Z" itemprop="datePublished">2020-11-12</time>
@@ -77,8 +81,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/12/indexeddb-transaction/">IndexedDB transaction 测试</a>
+    <h1 class="article-title" itemprop="name">
+      IndexedDB transaction 测试
     </h1>
   
 
@@ -189,11 +193,9 @@
     </footer>
   </div>
   
-</article>
-
-
+    
   
-
+</article>
 
 </section>
         
