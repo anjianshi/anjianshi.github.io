@@ -1,12 +1,14 @@
 ---
-title: IndexedDB transaction 测试
+title: IndexedDB transaction 行为测试
 date: 2020-11-12 17:07:26
 tags: 
 - JavaScript
 - IndexedDB
 ---
 
-Tips：理解以下测试内容需要先了解：宏任务、微任务、事件循环（Event-Loop）的概念。
+
+Tips：不熟悉宏任务、微任务、事件循环（Event-Loop）等概念的童鞋，可以先看下这篇文章：<https://segmentfault.com/a/1190000014940904>
+
 
 # 测试目标
 1. transaction 的执行方式
@@ -246,7 +248,7 @@ class Transaction {
 }
 ```
 
-使用和前面完全一样的测试代码，获得输出输出：
+使用和前面完全一样的测试代码，获得了同样的输出：
 ```
 1-1 直接执行 start
 4-1 async-await start
@@ -460,9 +462,9 @@ case4: query other transaction result [{…}]
 ```
 
 现象分析：
-- objectStore 有交集的两个 transaction，会等前一个 transaction 的所有读写操作结束后，才执行后一个 transaction 的操作。
+- 如果两个 transaction 的 objectStore 列表**有交集**，会等前一个 transaction 的所有读写操作结束后，才执行后一个 transaction 的操作。
   （无论后一个 transaction 实际读写的是不是前一个 transaction 读写的 objectStore，也无论前一个 transaction 是 readwrite 还是 readonly）
-- objectStore 没有交集的两个 transaction 执行操作不会产生等待。
+- 如果两个 transaction 的 objectStore 列表**没有交集**，那么执行操作不会产生等待。
 
 结论：
 - 浏览器通过让后面的 transaction 等待前面的 transaction 来实现事务间的隔离。
