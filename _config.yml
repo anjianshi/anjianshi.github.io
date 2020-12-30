@@ -2,6 +2,9 @@
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
+# 第三方对接
+disqus_shortname: jian-dan-yan-jiu
+
 # Site
 title: 简单研究
 subtitle: '安坚实的个人博客'
