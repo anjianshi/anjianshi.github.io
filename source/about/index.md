@@ -21,6 +21,7 @@ export default {
     影: ['《这个杀手不太冷》', '《秋天的童话》', '《让子弹飞》', '《燕尾蝶》'],
   ],
   特点: ['缺心眼儿'],
+  处世哲学: ['相信人性，约束人性'],
   称号: [
     'Daenerys Stormborn of House Targaryen', 'Rightful heir to the Iron Throne', 
     'Rightful King of the Andals and the First Men', 'Protector of the Seven Kingdoms',
