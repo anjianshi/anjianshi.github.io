@@ -12,13 +12,21 @@ export default {
   身高: '170厘米',
   体重：'180斤',
   兴趣：['编程', '音乐', '动漫', '运动'],
+  喜爱: {
+    人: [
+      '周杰伦', '周星驰', '周润发',
+      '宫崎骏', '北野武', '岩井俊二',
+    ],
+    书: ['《献给阿尔吉侬的花束》', '《银河帝国系列》'],
+    影: ['《这个杀手不太冷》', '《秋天的童话》', '《让子弹飞》', '《燕尾蝶》'],
+  ],
   特点: ['缺心眼儿'],
   称号: [
     'Daenerys Stormborn of House Targaryen', 'Rightful heir to the Iron Throne', 
     'Rightful King of the Andals and the First Men', 'Protector of the Seven Kingdoms',
     'The Father of Dragons', 'The Greatest Wolf of the Great Grass Sea', 
     'The Unburnt,the Breaker of Chains',
-    'Frontend Programmer', 'Backend Programmer', 'System Operator', 'Photoshoper', 'PC DIYer',
+    'Frontend And Backend Programmer', 'System Operator', 'Photoshoper', 'PC DIYer',
     'Kiss-Shot', 'Acerola-Orion', 'Heart-Under-Blade',
   ],
   技能: {
