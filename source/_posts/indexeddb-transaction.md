@@ -185,6 +185,7 @@ transaction complete
 1. 建立 transaction 的那个 event-loop，以及每一个操作完成触发回调的 event-loop，都会被标记为“transaction 可用”
 2. 在拥有标记的 event-loop 里，可以调用 transaction 执行操作，反之则不允许。（会抛出异常，而不是触发 `request.onerror` 回调）
 3. 当所有有标记的 event-loop 都运行完成，且每一个 event-loop 里都没有再触发新操作，浏览器就认为事务已完成，触发 commit。
+（注意！Safari 中略有不同，见后面小节）
 
 用伪代码来表现这个逻辑：
 ```js
@@ -299,6 +300,28 @@ async function asyncTest() {
 }
 asyncTest()
 ```
+
+## Safari 中的注意事项
+Mac 和 iOS 上的 Safari 都有一个奇怪的现象：  
+`如果 transaction 是在一个宏任务中生成的，那么必须直接使用，不能在新开的微任务中使用（当然更不能在新开的宏任务中使用）。`
+
+```js
+setTimeout(() => {
+  const transaction = db.transaction('test', 'readwrite')
+  transaction.addEventListener('complete', () => console.log('transaction complete'))
+  const objectStore = transaction.objectStore('test')
+
+  Promise.resolve(1).then(() => {
+    console.log('1-2 微任务中执行 start')
+    execute(objectStore.getAll(), result => console.log('1-2 微任务中执行 end', result))
+  })
+})
+```
+
+以上代码，在 Chrome 和 Firefix 中正常，在 Safari 中就会报错：  
+`Failed to execute 'getAll' on 'IDBObjectStore': The transaction is inactive or finished.`
+
+因此，考虑到兼容性，最好在所有地方都保证生成 transaction 后直接使用，不要传递到微任务中。
 
 
 # 3.1 commit 的行为
